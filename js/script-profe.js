@@ -45,18 +45,31 @@ listaTemas.forEach(tema => {
     // console.log(titulo);
 
     // usamos innerHTML para crear nuestros temas
-    containerCanciones.innerHTML += `
-                                    <li class="cardCancion" data-id="${id}">
-                                        <img src="./${imagen}" alt="Artista 1">
-                                        <div>
-                                            <h2>${titulo}</h2>
-                                            <small>${artista}</small>
-                                        </div>
-                                    </li>
-    `;
+    // containerCanciones.innerHTML += `
+    //                                 <li class="cardCancion" data-id="${id}">
+    //                                     <img src="./${imagen}" alt="Artista 1">
+    //                                     <div>
+    //                                         <h2>${titulo}</h2>
+    //                                         <small>${artista}</small>
+    //                                     </div>
+    //                                 </li>
+    // `;
 
     // agarrar el último hijo agregado para incluirle un eventListener 
-    const cardCancion = containerCanciones.lastChild;
+    // const cardCancion = containerCanciones.lastChild;
+    
+    const cardCancion = document.createElement('li');
+    cardCancion.dataset.id = id;
+    cardCancion.className = "cardCancion";
+    cardCancion.innerHTML = `
+
+                            <img src="./${imagen}" alt="Artista 1">
+                            <div>
+                                <h2>${titulo}</h2>
+                                <small>${artista}</small>
+                            </div>
+
+    `
 
     cardCancion.addEventListener("click", () => {
         cargarCancion(id);
