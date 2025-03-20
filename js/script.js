@@ -62,7 +62,7 @@ const handleCargarCancion = () => {
 
     cancionActual.innerHTML =
     `
-    <h2>Reproducciendo...</h2>
+    <h2>Reproduciendo...</h2>
     <div class= "reproductor" >
         <img src = "${imagen}">
         <div class="reproductorInfo">

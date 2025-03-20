@@ -11,7 +11,8 @@
     padding: 10px;
     border-radius: 8px;
 
-
+    object-fit: fill;
+    width: 400px;
     list-style-type: none;
     display: flex;
     gap: 20px;
@@ -21,8 +22,8 @@
 }
 
 .cardCancion img{
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
 }
 
 .tab-content {
@@ -72,10 +73,11 @@
     justify-content: center;
     align-items: end;  
     width: 200px;
+    height: 7vh;
 }
 
 .cancionActual img {
-    width: 100px;
+    width: 0;
 }
 
 .reproductorInfo{
@@ -83,3 +85,4 @@
     flex-direction: column;
 }
 
+/*MQ*/
