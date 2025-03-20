@@ -30,8 +30,7 @@
                 </li> -->
             </ul>
           
-            <div class="cancionActual" id="cancionActual">
-            </div>
+            <div class="cancionActual" id="cancionActual"> </div>
 
 
         </div>
@@ -39,28 +38,29 @@
 
                 <h1>Canción Actual</h1>
                 <div class="paginaCancionActual" id="paginaCancionActual">
+                    <h2>Seleccione una canción</h2>
                 </div>
                     <div class="player">
+                    <i id="btnAnterior" class="fas fa-step-backward"></i>
                     <i id="btnPlay" class="fas fa-play"></i>
                     <i id="btnPausa" class="fas fa-pause"></i>
                     <i id="btnSiguiente" class="fas fa-step-forward"></i>
-                    <i id="btnAnterior" class="fas fa-step-backward"></i>
                 </div>
-                <audio src="" controls></audio>
+                <audio src="" controls id="audioPlayer"></audio>
             
         </div>
     </div>
 
     <nav class="bottom-nav">
-        <button class="nav-button " data-tab="tab1"><i class="fas fa-home"></i><span>Inicio</span></button>
-        <button class="nav-button" data-tab="tab2 active"><i class="fas fa-music"></i><span>Lista</span></button>
+        <button class="nav-button " data-tab="tab1 "><i class="fas fa-home"></i><span>Inicio</span></button>
+        <button class="nav-button" data-tab="tab2"><i class="fas fa-music active"></i><span>Lista</span></button>
         <button class="nav-button" data-tab="tab3"><i class="fas fa-volume-up"></i><span>Canción</span></button>
     </nav>
 
     <!--Código del alumno-->
-    <script src="js/script.js"></script>
+    <!-- <script src="js/script.js"></script> -->
 
      <!--Código del profe-->
-     <!-- <script src="js/script-profe.js"></script> -->
+     <script src="js/script-profe.js"></script>
 </body>
 </html>

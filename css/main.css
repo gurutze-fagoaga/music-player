@@ -12,6 +12,31 @@ body {
     flex-grow: 1;
 }
 
+
+.tab-content {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1;
+
+    overflow-y: auto;
+
+    left: 100%; /* por defecto fuera de pantalla */
+    transition: left 0.3s ease-in-out;
+
+    display:flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center;
+    height: 100%;
+}
+
+.tab-content.active {
+    left: 0;
+    z-index: 2;
+}
+
 .bottom-nav {
     height: 80px;
     display: flex;

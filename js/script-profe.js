@@ -2,18 +2,20 @@ const listaBloques = document.querySelectorAll(".tab-content");
 const listaButtons = document.querySelectorAll(".nav-button");
 const containerCanciones = document.getElementById("containerCanciones");
 
-const listaCanciones = [
-    { id: 1, titulo: "Canción 1", artista: "Artista 1", imagen: "img/img1.jpg" , fuente: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { id: 2, titulo: "Canción 2", artista: "Artista 2", imagen: "img/img2.jpg" , fuente: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-    { id: 3, titulo: "Canción 3", artista: "Artista 3", imagen: "img/img3.jpg" , fuente: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
-    { id: 4, titulo: "Canción 4", artista: "Artista 4", imagen: "img/img4.jpg" , fuente: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
-    { id: 5, titulo: "Canción 5", artista: "Artista 5", imagen: "img/img5.jpg" , fuente: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" }
+const listaTemas = [
+    { id: 1, titulo: "Amaierak", artista: "Malko", imagen: "img/malko.jpeg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+    { id: 2, titulo: "MAPS", artista: "Amaia", imagen: "img/amaia.webp", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+    { id: 3, titulo: "Fusilaren hotsa", artista: "La txama", imagen: "img/la-txama.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+    { id: 4, titulo: "Ravean xuabe", artista: "Olaia Inziarte", imagen: "img/olaia-inziarte-zerrautsa.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
+    { id: 5, titulo: "Bueltatzen", artista: "Berri Txarrak", imagen: "img/berri-txarrak.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" }
 ];
 
-// -------------- NAVEGACIÓN --------------------//
-listaButtons.forEach( (button, idx) =>{
+let posicionTemaActual = 0;
 
-    button.addEventListener("click", ()=>{
+// -------------- NAVEGACIÓN --------------------//
+listaButtons.forEach((button, idx) => {
+
+    button.addEventListener("click", () => {
         // Obtenemos el ID del Target que quiero mostrar!
         const target = button.getAttribute("data-tab");
 
@@ -21,13 +23,13 @@ listaButtons.forEach( (button, idx) =>{
         listaBloques.forEach(bloque => {
             bloque.classList.remove("active");
             // si el bloque es el que me interesa, agregar active
-            if(bloque.id == target){
+            if (bloque.id == target) {
                 bloque.classList.add("active");
             }
         });
 
         // Actualizar el botón activo de navegación
-        listaButtons.forEach( btn => {
+        listaButtons.forEach(btn => {
             btn.classList.remove("active");
             button.classList.add("active");
         });
@@ -37,23 +39,95 @@ listaButtons.forEach( (button, idx) =>{
 
 // -------------- LISTAR TEMAS --------------------//
 
-listaCanciones.forEach( tema => {
+listaTemas.forEach(tema => {
     // deconstrucción del objeto "tema"
-    const {id, titulo, artista, imagen, fuente} = tema;
-    console.log(titulo);
+    const { id, titulo, artista, imagen, fuente } = tema;
+    // console.log(titulo);
 
     // usamos innerHTML para crear nuestros temas
     containerCanciones.innerHTML += `
-                                    <li class="cardCancion">
+                                    <li class="cardCancion" data-id="${id}">
                                         <img src="./${imagen}" alt="Artista 1">
                                         <div>
                                             <h2>${titulo}</h2>
                                             <small>${artista}</small>
                                         </div>
                                     </li>
-    `
+    `;
 
-})
+    // agarrar el último hijo agregado para incluirle un eventListener 
+    const cardCancion = containerCanciones.lastChild;
+
+    cardCancion.addEventListener("click", () => {
+        cargarCancion(id);
+
+        // opcional : pasar a la pestaña de reproducción
+        document.querySelector("[data-tab]='tab3'").click();
+
+    });
+
+});
 
 
 // -------------- REPRODUCTOR ---------------------//
+
+const prevBtn = document.querySelector(".fa-step-backward");
+const playBtn = document.querySelector(".fa-play");
+const pauseBtn = document.querySelector(".fa-pause");
+const nextBtn = document.querySelector(".fa-step-forward");
+const audioPlayer = document.querySelector("audioPlayer"); // nuestro reproductor
+const divCurrentSongInfo = document.querySelector("#divCurrentSongInfo");
+
+pauseBtn.style.display = "none";
+
+
+// función para cargar un tema
+
+function cargarCancion(id) {
+    // recorremos nuestras canciones y obtenemos solo la que me interesa
+    const cancion = listaTemas.find(tema => tema.id == id);
+
+    if (!cancion) { return; };
+
+    console.log(cancion);
+    audioPlayer.src = cancion.fuente;
+    idCancionActual = id;
+
+    paginaCancionActual.innerHTML = containerCanciones.innerHTML;
+
+
+    audioPlayer.play();
+    playBtn.style.display="none";
+    pauseBtn.style.display="inline";
+
+};
+
+// Event Listeners de botones del reproductor
+
+playBtn.addEventListener("click", ()=> {
+
+    audioPlayer.play();
+    playBtn.style.display="none";
+    pauseBtn.style.display="inline";
+
+});
+
+pauseBtn.addEventListener("click", ()=> {
+
+    audioPlayer.pause();
+    playBtn.style.display="inline";
+    pauseBtn.style.display="none";
+
+});
+
+nextBtn.addEventListener("click", () => {
+    posicionTemaActual++;
+    listaTemas[posicionTemaActual].id;
+    cargarCancion(idCancion);
+});
+
+prevBtn.addEventListener("click", () => {
+    posicionTemaActual--;
+    listaTemas[posicionTemaActual].id;
+    cargarCancion(idCancion);
+});
