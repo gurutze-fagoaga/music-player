@@ -3,11 +3,11 @@ const listaButtons = document.querySelectorAll(".nav-button");
 const containerCanciones = document.getElementById("containerCanciones");
 
 const listaTemas = [
-    { id: 1, titulo: "Amaierak", artista: "Malko", imagen: "img/malko.jpeg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { id: 2, titulo: "MAPS", artista: "Amaia", imagen: "img/amaia.webp", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-    { id: 3, titulo: "Fusilaren hotsa", artista: "La txama", imagen: "img/la-txama.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
-    { id: 4, titulo: "Ravean xuabe", artista: "Olaia Inziarte", imagen: "img/olaia-inziarte-zerrautsa.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
-    { id: 5, titulo: "Bueltatzen", artista: "Berri Txarrak", imagen: "img/berri-txarrak.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" }
+    { id: 1, titulo: "Amaierak", artista: "Malko", imagen: "img/malko.jpeg", fuente: "./audio/amaierak.mp3" },
+    { id: 2, titulo: "MAPS", artista: "Amaia", imagen: "img/amaia.webp", fuente: "./audio/maps.mp3" },
+    { id: 3, titulo: "Fusilaren hotsa", artista: "La txama", imagen: "img/la-txama.jpg", fuente: "./audio/fusilaren-hotsa.mp3" },
+    { id: 4, titulo: "Ravean xuabe", artista: "Olaia Inziarte", imagen: "img/olaia-inziarte-zerrautsa.jpg", fuente: "./audio/ravean-xuabe.mp3" },
+    { id: 5, titulo: "Bueltatzen", artista: "Berri Txarrak", imagen: "img/berri-txarrak.jpg", fuente: "./audio/bueltatzen.mp3" }
 ];
 
 let posicionTemaActual = 0;
@@ -62,7 +62,6 @@ listaTemas.forEach(tema => {
     cardCancion.dataset.id = id;
     cardCancion.className = "cardCancion";
     cardCancion.innerHTML = `
-
                             <img src="./${imagen}" alt="Artista 1">
                             <div>
                                 <h2>${titulo}</h2>
@@ -89,9 +88,9 @@ const playBtn = document.querySelector(".fa-play");
 const pauseBtn = document.querySelector(".fa-pause");
 const nextBtn = document.querySelector(".fa-step-forward");
 const audioPlayer = document.querySelector("audioPlayer"); // nuestro reproductor
-const divCurrentSongInfo = document.querySelector("#divCurrentSongInfo");
+const divCurrentSongInfo = document.querySelector("#paginaCancionActual");
 
-pauseBtn.style.display = "none";
+pauseBtn.style.display="none";
 
 
 // función para cargar un tema

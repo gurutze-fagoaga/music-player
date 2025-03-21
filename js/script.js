@@ -3,6 +3,7 @@
 const navegador = document.querySelector(".bottom-nav");
 const listaBotones = navegador.querySelectorAll(".nav-button");
 const listaContents = document.querySelectorAll(".tab-content");
+const containerCanciones = document.getElementById("containerCanciones");
 const paginaCanciones = document.querySelector("#tab2");
 const cancionActual = document.querySelector("#cancionActual");
 const paginaCancionActual = document.querySelector("#paginaCancionActual");
@@ -11,13 +12,15 @@ const btnAnterior = document.querySelector("#btnAnterior");
 const btnPlay = document.querySelector("#btnPlay");
 const btnPausa = document.querySelector("#btnPausa");
 const btnSiguiente = document.querySelector("#btnSiguiente");
+const audioPlayer = document.querySelector("audioPlayer"); // nuestro reproductor
+
 
 const listaCanciones = [
-    { id: 0, titulo: "Amaierak", artista: "Malko", imagen: "img/malko.jpeg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { id: 1, titulo: "MAPS", artista: "Amaia", imagen: "img/amaia.webp", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-    { id: 2, titulo: "Fusilaren hotsa", artista: "La txama", imagen: "img/la-txama.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
-    { id: 3, titulo: "Ravean xuabe", artista: "Olaia Inziarte", imagen: "img/olaia-inziarte-zerrautsa.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
-    { id: 4, titulo: "Bueltatzen", artista: "Berri Txarrak", imagen: "img/berri-txarrak.jpg", cancion: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" }
+    { id: 28, titulo: "Amaierak", artista: "Malko", imagen: "img/malko.jpeg", fuente: "audio/amaierak.mp3" },
+    { id: 1, titulo: "MAPS", artista: "Amaia", imagen: "img/amaia.webp", fuente: "audio/maps.mp3" },
+    { id: 2, titulo: "Fusilaren hotsa", artista: "La txama", imagen: "img/la-txama.jpg", fuente: "audio/fusilaren-hotsa.mp3" },
+    { id: 3, titulo: "Ravean xuabe", artista: "Olaia Inziarte", imagen: "img/olaia-inziarte-zerrautsa.jpg", fuente: "audio/ravean-xuabe.mp3" },
+    { id: 4, titulo: "Bueltatzen", artista: "Berri Txarrak", imagen: "img/berri-txarrak.jpg", fuente: "audio/bueltatzen.mp3" }
 ];
 
 let idCancion = 0;
@@ -55,14 +58,14 @@ listaCanciones.forEach(cancion => {
 
 // creamos la función de cargar la canción actual
 
-const handleCargarCancion = () => {
+const handleCargarCancion = (id) => {
     const titulo = listaCanciones[idCancion].titulo;
     const artista = listaCanciones[idCancion].artista;
     const imagen = listaCanciones[idCancion].imagen;
 
     cancionActual.innerHTML =
     `
-    <h2>Reproduciendo...</h2>
+    <h2>Reproducciendo...</h2>
     <div class= "reproductor" >
         <img src = "${imagen}">
         <div class="reproductorInfo">
@@ -75,6 +78,8 @@ const handleCargarCancion = () => {
     paginaCancionActual.innerHTML = cancionActual.innerHTML;
 
 
+
+
 };
 
 // funciones de los controllers
@@ -83,13 +88,13 @@ btnSiguiente.addEventListener("click", () => {
     idCancion++;
     console.log(idCancion);
     reiniciarReproduccion();
-    handleCargarCancion();
+    handleCargarCancion(idCancion);
 });
 
 btnAnterior.addEventListener("click", () => {
     idCancion--;
     reiniciarReproduccion();
-    handleCargarCancion();
+    handleCargarCancion(idCancion);
 });
 
 
@@ -105,10 +110,13 @@ function reiniciarReproduccion() {
 // llamamos a la canción actual al hacer click en las canciones
 
 paginaCanciones.addEventListener("click", (event) => {
+
     console.log(event.target.id);
     // el id de los elementos que quiero que se reproduzcan al clickear = "id" de listaCanciones = la posición en el array
     idCancion = event.target.id;
-    handleCargarCancion();
+    handleCargarCancion(idCancion);
+
+
 });
 
 
@@ -116,9 +124,4 @@ paginaCanciones.addEventListener("click", (event) => {
 
 // PARTE 3: Ejecutamos la función de cargar la canción actual, con la canción nº 1 (idCancion=0)por defecto
 
-handleCargarCancion();
-
-
-
-
-
+handleCargarCancion(idCancion);
