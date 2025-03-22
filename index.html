@@ -13,45 +13,48 @@
 
 </head>
 
+
+
 <body>
     <div class="container">
-        <div id="tab1" class="tab-content " style="background-color: #f37d7b;">
-            <h1>Página Principal</h1>
+        <div id="tab1" class="tab-content ">
+            <h1>Music Player</h1>
             <p>Bienvenido a nuestra app de música!</p>
         </div>
-        <div id="tab2" class="tab-content active" style="background-color: #f37d7b;">
-            <h1>Lista de Reproducción</h1>
+        <div id="tab2" class="tab-content active">
+
+            <h1>Playlist</h1>
 
             <ul id="containerCanciones" class="containerCanciones">
                 <!-- <li class="cardCancion">
-                </li> -->
+                    </li> -->
             </ul>
 
-            <div class="cancionActual" id="cancionActual">
+            <div class="cancionActual" id="cancionActual">Selecciona una canción
             </div>
 
 
         </div>
-        <div id="tab3" class="tab-content" style="background-color: #f37d7b;">
+        <div id="tab3" class="tab-content">
 
-            <h1>Canción Actual</h1>
-            <div class="paginaCancionActual" id="paginaCancionActual">
-            </div>
+            <h1>Playing</h1>
+            <div class="paginaCancionActual divCurrentSongInfo" id="paginaCancionActual">
+                Selecciona una canción</div>
             <div class="player">
                 <i id="btnAnterior" class="fas fa-step-backward"></i>
                 <i id="btnPlay" class="fas fa-play"></i>
                 <i id="btnPausa" class="fas fa-pause"></i>
                 <i id="btnSiguiente" class="fas fa-step-forward"></i>
             </div>
-            <audio class="audioPlayer" src="" controls></audio>
+            <audio id="audioPlayer" src=""></audio>
 
         </div>
     </div>
 
     <nav class="bottom-nav">
-        <button class="nav-button " data-tab="tab1"><i class="fas fa-home"></i><span>Inicio</span></button>
-        <button class="nav-button active" data-tab="tab2"><i class="fas fa-music"></i><span>Lista</span></button>
-        <button class="nav-button" data-tab="tab3"><i class="fas fa-volume-up"></i><span>Canción</span></button>
+        <button class="nav-button " data-tab="tab1"><i class="fas fa-home"></i></button>
+        <button class="nav-button active" data-tab="tab2"><i class="fas fa-music"></i></button>
+        <button class="nav-button" data-tab="tab3"><i class="fas fa-volume-up"></i></button>
     </nav>
 
     <!--Código del alumno-->

@@ -1,11 +1,11 @@
 .paginaCancionActual {
-    width: 50%;
+    width: 300px;
     padding: 20px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: rgb(240, 170, 170);
+    background-color: rgb(170, 195, 179);
     color: rgb(0, 0, 0);
     object-fit: cover;
     margin-top: 20px;
@@ -16,16 +16,28 @@
 }
 
 .paginaCancionActual img{
-    max-width: 100%;
+    width: 200px;
 }
 
 .reproductor{
     display: flex;
     flex-direction: column;
-    gap: 1em;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
+    gap: 1em;
     width: 200px;
     height: 100%;
+}
+
+.reproductorInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player{
+    margin-bottom: 10em;
+    width: 200px
 }
 

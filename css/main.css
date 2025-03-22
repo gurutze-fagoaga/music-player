@@ -1,9 +1,16 @@
-
+@font-face {
+    font-family: "DM sans";
+    src: url(/fonts/DMSans-VariableFont_opsz\,wght.ttf);
+}
 body {
     height: 100vh;
     display:flex;
     flex-direction: column;
-    font-family: Arial, sans-serif;
+    font-family: "DM sans";
+    background-image: url(/img/background-image.jpg);
+    background-size: cover;
+    backdrop-filter: brightness(70%);
+    color: white;
 }
 
 .container {
@@ -12,12 +19,10 @@ body {
     flex-grow: 1;
 }
 
-
 .tab-content {
     position: absolute;
     top: 0;
     width: 100%;
-    padding: 20px;
     z-index: 1;
 
     overflow-y: auto;
@@ -30,6 +35,7 @@ body {
     justify-content: space-between; 
     align-items: center;
     height: 100%;
+    padding: 2em;
 }
 
 .tab-content.active {
@@ -41,7 +47,7 @@ body {
     height: 80px;
     display: flex;
     justify-content: space-around;
-    background-color: #333;
+    background-color: #1e2d25;
     color: white;
     padding: 10px;
 }
@@ -57,6 +63,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    justify-content: center;
+    align-items: center;
 
     padding: 10px;
     border-radius: 5px;
@@ -81,4 +89,8 @@ body {
 
 .nav-button:hover {
     color: #000;
+}
+
+.cardCancion{
+    color: black;
 }
