@@ -1,13 +1,13 @@
 @font-face {
     font-family: "DM sans";
-    src: url(/fonts/DMSans-VariableFont_opsz\,wght.ttf);
+    src: url(../fonts/DMSans-VariableFont_opsz\,wght.ttf);
 }
 body {
     height: 100vh;
     display:flex;
     flex-direction: column;
     font-family: "DM sans";
-    background-image: url(/img/background-image.jpg);
+    background-image: url(../img/background-image.jpg);
     background-size: cover;
     backdrop-filter: brightness(70%);
     color: white;
